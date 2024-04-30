@@ -80,6 +80,7 @@ export const updateMonster = async (id: number, monster: Partial<Monster>) => {
     }
 
     revalidatePath(`/detail/${id}`);
+    revalidatePath("/");
 
     return updateded.data;
   } catch (error) {
