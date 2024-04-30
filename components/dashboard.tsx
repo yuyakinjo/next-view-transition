@@ -14,7 +14,7 @@ export async function Dashboard() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="bg-gray-900 text-white py-4 px-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Pokemon Dashboard</h1>
+        <h1 className="text-2xl font-bold">Monsters Dashboard</h1>
         <div className="flex items-center gap-4">
           <Button variant={"secondary"}>Transition</Button>
         </div>
