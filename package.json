@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "json-server": "json-server --watch db.json --port 3001"
+    "json-server": "json-server --port 3001"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
