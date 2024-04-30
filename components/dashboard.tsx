@@ -4,17 +4,12 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 
+import { getMonsters } from "@/app/api";
 import { Button } from "@/components/ui/button";
-import type { monsters } from "@/db.json";
 import { MonsterCard } from "./monster-card";
 
-export type Monster = (typeof monsters)[number];
-
 export async function Dashboard() {
-  const monsters = await fetch("http:localhost:3001/monsters", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  }).then<Monster[]>((res) => res.json());
+  const monsters = await getMonsters();
 
   return (
     <div className="flex flex-col min-h-screen">
