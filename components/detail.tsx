@@ -1,4 +1,5 @@
-import type { Monster } from "@/app/api";
+import type { Monster } from "@/app/schema/monster";
+import { monsters } from "@/db.json";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 // import BuiltInLink from "next/link";
 import { Link } from "next-view-transitions";
@@ -10,7 +11,7 @@ interface Props {
 
 export function Detail({ monster }: Props) {
   const hasPrevious = Number(monster.id) - 1 > 0;
-  const hasNext = Number(monster.id) + 1 <= 4;
+  const hasNext = Number(monster.id) + 1 <= monsters.length;
 
   return (
     <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6">
