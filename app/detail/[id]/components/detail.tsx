@@ -3,6 +3,8 @@ import type { Monster } from "@/schemas/monster";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
+import { Suspense } from "react";
+import { FavoriteButton } from "./favorite-button";
 
 interface Props {
   monster: Monster;
@@ -50,7 +52,12 @@ export function Detail({ monster }: Props) {
       </div>
       <div className="grid gap-4 md:gap-10 items-start">
         <div className="grid gap-2">
-          <h1 className="font-bold text-3xl lg:text-4xl">{monster.name}</h1>
+          <div className="flex flex-row justify-start items-center gap-5">
+            <h1 className="font-bold text-3xl lg:text-4xl">{monster.name}</h1>
+            <Suspense>
+              <FavoriteButton monster={monster} />
+            </Suspense>
+          </div>
           <div className="flex items-center gap-2">
             <div className="inline-block rounded-lg bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100">
               {monster.type}

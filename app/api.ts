@@ -1,6 +1,7 @@
 "use server";
 
-import { MonsterSchema } from "../schemas/monster";
+import { MonsterSchema, type Monster } from "@/schemas/monster";
+import { revalidatePath } from "next/cache";
 import { MonstersSchema } from "../schemas/monsters";
 import { fetchOptions } from "./fetch-option";
 
@@ -59,5 +60,30 @@ export const getMonsterByFavorite = async (favorite: boolean) => {
   } catch (error) {
     console.error(error);
     return [];
+  }
+};
+
+export const updateMonster = async (id: number, monster: Partial<Monster>) => {
+  const { monstersURL, options } = fetchOptions;
+
+  try {
+    const updateded = await fetch(`${monstersURL}/${id}`, {
+      ...options,
+      method: "PATCH",
+      body: JSON.stringify(monster),
+    })
+      .then((res) => res.json())
+      .then(MonsterSchema.safeParse);
+
+    if (!updateded.success) {
+      throw new Error("Failed to parse updated monster");
+    }
+
+    revalidatePath(`/detail/${id}`);
+
+    return updateded.data;
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 };
