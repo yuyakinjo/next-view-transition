@@ -4,6 +4,7 @@ import { updateMonster } from "@/app/api";
 import { Button } from "@/components/ui/button";
 import type { Monster } from "@/schemas/monster";
 import { Star, StarOff } from "lucide-react";
+import { toast } from "sonner";
 
 interface Props {
   monster: Monster;
@@ -13,6 +14,7 @@ export const FavoriteButton = ({ monster }: Props) => {
   const handleFavorite = async (monster: Monster) => {
     monster.favorite = !monster.favorite;
     await updateMonster(monster.id, monster);
+    toast.success("お気に入り更新しました");
   };
 
   return (
