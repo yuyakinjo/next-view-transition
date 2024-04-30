@@ -1,7 +1,6 @@
-import type { Monster } from "@/app/schema/monster";
 import { monsters } from "@/db.json";
+import type { Monster } from "@/schemas/monster";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-// import BuiltInLink from "next/link";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
 
@@ -10,8 +9,8 @@ interface Props {
 }
 
 export function Detail({ monster }: Props) {
-  const hasPrevious = Number(monster.id) - 1 > 0;
-  const hasNext = Number(monster.id) + 1 <= monsters.length;
+  const hasPrevious = monster.id - 1 > 0;
+  const hasNext = monster.id + 1 <= monsters.length;
 
   return (
     <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6">

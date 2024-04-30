@@ -1,14 +1,15 @@
 "use server";
 
+import { MonsterSchema } from "../schemas/monster";
+import { MonstersSchema } from "../schemas/monsters";
 import { fetchOptions } from "./fetch-option";
-import { MonsterListSchema, MonsterSchema } from "./schema/monster";
 
 export const getMonsters = async () => {
   const { monstersURL, options } = fetchOptions;
   try {
     const monsters = await fetch(monstersURL, options)
       .then((res) => res.json())
-      .then(MonsterListSchema.safeParse);
+      .then(MonstersSchema.safeParse);
 
     if (!monsters.success) {
       throw new Error("Failed to parse monsters");
@@ -21,7 +22,7 @@ export const getMonsters = async () => {
   }
 };
 
-export const getMonster = async (id: string) => {
+export const getMonster = async (id: number) => {
   const { monstersURL, options } = fetchOptions;
   try {
     const monster = await fetch(`${monstersURL}/${id}`, options)
@@ -48,7 +49,7 @@ export const getMonsterByFavorite = async (favorite: boolean) => {
       options
     )
       .then((res) => res.json())
-      .then(MonsterListSchema.safeParse);
+      .then(MonstersSchema.safeParse);
 
     if (!monsters.success) {
       throw new Error("Failed to parse monsters");

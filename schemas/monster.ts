@@ -16,6 +16,3 @@ export const MonsterSchema = z.object({
 });
 
 export type Monster = z.infer<typeof MonsterSchema>;
-
-export const MonsterListSchema = z.array(MonsterSchema);
-export type MonsterList = z.infer<typeof MonsterListSchema>;

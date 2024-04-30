@@ -1,4 +1,4 @@
-import type { Monster } from "@/app/schema/monster";
+import type { Monster } from "@/schemas/monster";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
 // import BuiltInLink from "next/link";

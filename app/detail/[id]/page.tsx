@@ -1,9 +1,10 @@
 import { getMonster } from "@/app/api";
-import { Detail } from "@/components/detail";
+import { Detail } from "@/app/detail/[id]/components/detail";
+import type { Monster } from "@/schemas/monster";
 import { Suspense } from "react";
 
 interface Props {
-  params: { id: string };
+  params: { id: Monster["id"] };
 }
 
 export default async function Page({ params }: Props) {
