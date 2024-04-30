@@ -1,18 +1,12 @@
 "use server";
 
-import { unstable_noStore } from "next/cache";
+import { fetchOptions } from "./fetch-option";
 import { MonsterListSchema, MonsterSchema } from "./schema/monster";
 
-const API_URL = "http://localhost:3001";
-const MONSTERS_URL = `${API_URL}/monsters`;
-const fetchOptions = {
-  method: "GET",
-  headers: { "Content-Type": "application/json" },
-};
-
 export const getMonsters = async () => {
+  const { monstersURL, options } = fetchOptions;
   try {
-    const monsters = await fetch(MONSTERS_URL, fetchOptions)
+    const monsters = await fetch(monstersURL, options)
       .then((res) => res.json())
       .then(MonsterListSchema.safeParse);
 
@@ -28,9 +22,9 @@ export const getMonsters = async () => {
 };
 
 export const getMonster = async (id: string) => {
-  unstable_noStore();
+  const { monstersURL, options } = fetchOptions;
   try {
-    const monster = await fetch(`${MONSTERS_URL}/${id}`, fetchOptions)
+    const monster = await fetch(`${monstersURL}/${id}`, options)
       .then((res) => res.json())
       .then(MonsterSchema.safeParse);
 
@@ -46,11 +40,12 @@ export const getMonster = async (id: string) => {
 };
 
 export const getMonsterByFavorite = async (favorite: boolean) => {
+  const { monstersURL, options } = fetchOptions;
   const isFavorite = favorite ? 1 : 0;
   try {
     const monsters = await fetch(
-      `${MONSTERS_URL}?favorite=${isFavorite}`,
-      fetchOptions
+      `${monstersURL}?favorite=${isFavorite}`,
+      options
     )
       .then((res) => res.json())
       .then(MonsterListSchema.safeParse);
