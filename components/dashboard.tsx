@@ -4,12 +4,18 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 
-import { Badge } from "@/components/ui/badge";
-
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import type { monsters } from "@/db.json";
+import { MonsterCard } from "./monster-card";
 
-export function Dashboard() {
+export type Monster = (typeof monsters)[number];
+
+export async function Dashboard() {
+  const monsters = await fetch("http:localhost:3001/monsters", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }).then<Monster[]>((res) => res.json());
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="bg-gray-900 text-white py-4 px-6 flex items-center justify-between">
@@ -27,251 +33,19 @@ export function Dashboard() {
         <div className="col-span-1 md:col-span-2 lg:col-span-3">
           <h2 className="text-xl font-bold mb-4">Your Favorite Pokemon</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <Card>
-              <CardContent className="flex flex-col items-center">
-                <img
-                  alt="Pikachu"
-                  className="rounded-full"
-                  height={100}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width={100}
-                />
-                <h3 className="text-lg font-bold mt-2">Pikachu</h3>
-                <div className="flex items-center gap-2 mt-2">
-                  <Badge className="px-2 py-1" variant="outline">
-                    Electric
-                  </Badge>
-                </div>
-                <div className="grid grid-cols-2 gap-2 mt-4">
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">HP</span>
-                    <span className="text-lg font-bold">90</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Attack</span>
-                    <span className="text-lg font-bold">80</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Defense</span>
-                    <span className="text-lg font-bold">60</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Speed</span>
-                    <span className="text-lg font-bold">100</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="flex flex-col items-center">
-                <img
-                  alt="Charizard"
-                  className="rounded-full"
-                  height={100}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width={100}
-                />
-                <h3 className="text-lg font-bold mt-2">Charizard</h3>
-                <div className="flex items-center gap-2 mt-2">
-                  <Badge className="px-2 py-1" variant="outline">
-                    Fire
-                  </Badge>
-                  <Badge className="px-2 py-1" variant="outline">
-                    Flying
-                  </Badge>
-                </div>
-                <div className="grid grid-cols-2 gap-2 mt-4">
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">HP</span>
-                    <span className="text-lg font-bold">78</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Attack</span>
-                    <span className="text-lg font-bold">84</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Defense</span>
-                    <span className="text-lg font-bold">78</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Speed</span>
-                    <span className="text-lg font-bold">100</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            {monsters
+              .filter((monster) => monster.favorite)
+              .map((monster) => (
+                <MonsterCard monster={monster} key={monster.id} />
+              ))}
           </div>
         </div>
         <div className="col-span-1 md:col-span-2 lg:col-span-3">
           <h2 className="text-xl font-bold mb-4">All Pokemon</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <Card>
-              <CardContent className="flex flex-col items-center">
-                <img
-                  alt="Bulbasaur"
-                  className="rounded-full"
-                  height={100}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width={100}
-                />
-                <h3 className="text-lg font-bold mt-2">Bulbasaur</h3>
-                <div className="flex items-center gap-2 mt-2">
-                  <Badge className="px-2 py-1" variant="outline">
-                    Grass
-                  </Badge>
-                  <Badge className="px-2 py-1" variant="outline">
-                    Poison
-                  </Badge>
-                </div>
-                <div className="grid grid-cols-2 gap-2 mt-4">
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">HP</span>
-                    <span className="text-lg font-bold">45</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Attack</span>
-                    <span className="text-lg font-bold">49</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Defense</span>
-                    <span className="text-lg font-bold">49</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Speed</span>
-                    <span className="text-lg font-bold">45</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="flex flex-col items-center">
-                <img
-                  alt="Squirtle"
-                  className="rounded-full"
-                  height={100}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width={100}
-                />
-                <h3 className="text-lg font-bold mt-2">Squirtle</h3>
-                <div className="flex items-center gap-2 mt-2">
-                  <Badge className="px-2 py-1" variant="outline">
-                    Water
-                  </Badge>
-                </div>
-                <div className="grid grid-cols-2 gap-2 mt-4">
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">HP</span>
-                    <span className="text-lg font-bold">44</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Attack</span>
-                    <span className="text-lg font-bold">48</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Defense</span>
-                    <span className="text-lg font-bold">65</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Speed</span>
-                    <span className="text-lg font-bold">43</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="flex flex-col items-center">
-                <img
-                  alt="Charmander"
-                  className="rounded-full"
-                  height={100}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width={100}
-                />
-                <h3 className="text-lg font-bold mt-2">Charmander</h3>
-                <div className="flex items-center gap-2 mt-2">
-                  <Badge className="px-2 py-1" variant="outline">
-                    Fire
-                  </Badge>
-                </div>
-                <div className="grid grid-cols-2 gap-2 mt-4">
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">HP</span>
-                    <span className="text-lg font-bold">39</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Attack</span>
-                    <span className="text-lg font-bold">52</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Defense</span>
-                    <span className="text-lg font-bold">43</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Speed</span>
-                    <span className="text-lg font-bold">65</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="flex flex-col items-center">
-                <img
-                  alt="Eevee"
-                  className="rounded-full"
-                  height={100}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width={100}
-                />
-                <h3 className="text-lg font-bold mt-2">Eevee</h3>
-                <div className="flex items-center gap-2 mt-2">
-                  <Badge className="px-2 py-1" variant="outline">
-                    Normal
-                  </Badge>
-                </div>
-                <div className="grid grid-cols-2 gap-2 mt-4">
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">HP</span>
-                    <span className="text-lg font-bold">55</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Attack</span>
-                    <span className="text-lg font-bold">55</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Defense</span>
-                    <span className="text-lg font-bold">50</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-500">Speed</span>
-                    <span className="text-lg font-bold">55</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            {monsters.map((monster) => (
+              <MonsterCard monster={monster} key={monster.id} />
+            ))}
           </div>
         </div>
       </main>
