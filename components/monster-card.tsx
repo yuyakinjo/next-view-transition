@@ -1,9 +1,9 @@
+import { FavoriteButton } from "@/app/detail/[id]/components/favorite-button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import type { Monster } from "@/schemas/monster";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
-// import BuiltInLink from "next/link";
-import { Badge } from "./ui/badge";
-import { Card, CardContent } from "./ui/card";
 
 interface Props {
   monster: Monster;
@@ -12,6 +12,9 @@ interface Props {
 export const MonsterCard = ({ monster }: Props) => {
   return (
     <Card key={monster.id}>
+      <CardHeader>
+        <FavoriteButton monster={monster} />
+      </CardHeader>
       <Link href={`/detail/${monster.id}`}>
         <CardContent className="flex flex-col items-center p-3">
           <Image
