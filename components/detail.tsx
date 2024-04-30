@@ -8,6 +8,9 @@ interface Props {
 }
 
 export function Detail({ monster }: Props) {
+  const hasPrevious = Number(monster.id) - 1 > 0;
+  const hasNext = Number(monster.id) + 1 <= 4;
+
   return (
     <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6">
       <div className="grid gap-4">
@@ -23,15 +26,24 @@ export function Detail({ monster }: Props) {
             className="inline-flex items-center gap-2 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-gray-100 dark:hover:text-gray-300"
             href={`/detail/${Number(monster.id) - 1}`}
           >
-            <ChevronLeftIcon className="size-4" />
-            前へ
+            {hasPrevious && (
+              <>
+                <ChevronLeftIcon className="size-4" />
+                前へ
+              </>
+            )}
           </Link>
+
           <Link
             className="inline-flex items-center gap-2 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-gray-100 dark:hover:text-gray-300"
             href={`/detail/${Number(monster.id) + 1}`}
           >
-            次へ
-            <ChevronRightIcon className="size-4" />
+            {hasNext && (
+              <>
+                次へ
+                <ChevronRightIcon className="size-4" />
+              </>
+            )}
           </Link>
         </div>
       </div>
