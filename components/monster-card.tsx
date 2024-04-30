@@ -1,5 +1,6 @@
 import type { Monster } from "@/app/api";
 import { Link } from "next-view-transitions";
+import Image from "next/image";
 // import BuiltInLink from "next/link";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
@@ -13,11 +14,11 @@ export const MonsterCard = ({ monster }: Props) => {
     <Card key={monster.id}>
       <Link href={`/detail/${monster.id}`}>
         <CardContent className="flex flex-col items-center p-3">
-          <img
+          <Image
             alt="denkinezumi"
             className="rounded-full"
             height={100}
-            src="/placeholder.svg"
+            src={monster.image}
             style={{
               aspectRatio: "100/100",
               objectFit: "cover",

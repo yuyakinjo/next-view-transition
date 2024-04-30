@@ -2,6 +2,7 @@ import type { Monster } from "@/app/api";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 // import BuiltInLink from "next/link";
 import { Link } from "next-view-transitions";
+import Image from "next/image";
 
 interface Props {
   monster: Monster;
@@ -14,11 +15,11 @@ export function Detail({ monster }: Props) {
   return (
     <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6">
       <div className="grid gap-4">
-        <img
+        <Image
           alt="detail"
           className="aspect-square object-cover border border-gray-200 w-full rounded-lg overflow-hidden dark:border-gray-800"
           height={600}
-          src="/placeholder.svg"
+          src={monster.image}
           width={600}
         />
         <div className="flex justify-between items-center">

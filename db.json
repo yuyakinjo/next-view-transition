@@ -2,7 +2,7 @@
   "monsters": [
     {
       "id": "1",
-      "name": "Denkinezumi",
+      "name": "Denkiguma",
       "type": "Electric",
       "hp": 35,
       "attack": 55,
@@ -11,7 +11,8 @@
       "specialAttack": 50,
       "specialDeffense": 25,
       "favorite": true,
-      "description": "Whenever denkinezumi comes across something new, it blasts it with a jolt of electricity. If you come across a blackened berry, it's evidence that this Pokémon mistook the intensity of its charge."
+      "image": "/image/fakemon-1.png",
+      "description": "Whenever denkiguma comes across something new, it blasts it with a jolt of electricity. If you come across a blackened berry, it's evidence that this Pokémon mistook the intensity of its charge."
     },
     {
       "id": "2",
@@ -24,6 +25,7 @@
       "specialAttack": 60,
       "specialDeffense": 50,
       "favorite": false,
+      "image": "/image/fakemon-3.png",
       "description": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when Charmander is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely."
     },
     {
@@ -37,6 +39,7 @@
       "specialAttack": 50,
       "specialDeffense": 64,
       "favorite": false,
+      "image": "/image/fakemon-2.png",
       "description": "Squirtle's shell is not merely used for protection. The shell's rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds."
     },
     {
@@ -50,6 +53,7 @@
       "specialAttack": 65,
       "specialDeffense": 65,
       "favorite": false,
+      "image": "/image/fakemon-4.png",
       "description": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger."
     }
   ]
