@@ -1,5 +1,6 @@
 import type { Monster } from "@/app/api";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
+// import BuiltInLink from "next/link";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
 

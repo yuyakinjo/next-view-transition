@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import { ViewTransitions } from "next-view-transitions";
 import { Inter } from "next/font/google";
 
 const fontSans = Inter({
@@ -19,15 +20,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="ja">
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable
+          )}
+        >
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

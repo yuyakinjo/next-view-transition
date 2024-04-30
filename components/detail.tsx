@@ -1,4 +1,7 @@
 import type { Monster } from "@/app/api";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+// import BuiltInLink from "next/link";
+import { Link } from "next-view-transitions";
 
 interface Props {
   monster: Monster;
@@ -15,6 +18,22 @@ export function Detail({ monster }: Props) {
           src="/placeholder.svg"
           width={600}
         />
+        <div className="flex justify-between items-center">
+          <Link
+            className="inline-flex items-center gap-2 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-gray-100 dark:hover:text-gray-300"
+            href={`/detail/${Number(monster.id) - 1}`}
+          >
+            <ChevronLeftIcon className="size-4" />
+            前へ
+          </Link>
+          <Link
+            className="inline-flex items-center gap-2 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-gray-100 dark:hover:text-gray-300"
+            href={`/detail/${Number(monster.id) + 1}`}
+          >
+            次へ
+            <ChevronRightIcon className="size-4" />
+          </Link>
+        </div>
       </div>
       <div className="grid gap-4 md:gap-10 items-start">
         <div className="grid gap-2">
@@ -71,6 +90,7 @@ export function Detail({ monster }: Props) {
             </p>
           </div>
         </div>
+        <Link href={"/"}>Homeへ</Link>
       </div>
     </div>
   );
