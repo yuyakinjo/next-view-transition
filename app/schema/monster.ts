@@ -10,6 +10,9 @@ export const MonsterSchema = z.object({
   speed: z.number(),
   favorite: z.boolean(),
   image: z.string(),
+  specialAttack: z.number(),
+  specialDeffense: z.number(),
+  description: z.string(),
 });
 
 export type Monster = z.infer<typeof MonsterSchema>;
