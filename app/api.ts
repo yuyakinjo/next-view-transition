@@ -1,6 +1,7 @@
 "use server";
 
 import type { monsters } from "@/db.json";
+import { unstable_noStore } from "next/cache";
 
 export const getMonsters = async () => {
   try {
@@ -18,6 +19,7 @@ export const getMonsters = async () => {
 export type Monster = (typeof monsters)[number];
 
 export const getMonster = async (id: string) => {
+  unstable_noStore();
   try {
     const monster = await fetch(`http:localhost:3001/monsters/${id}`, {
       method: "GET",

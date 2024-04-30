@@ -11,9 +11,9 @@ export const MonsterCard = ({ monster }: Props) => {
   return (
     <Card key={monster.id}>
       <Link href={`/detail/${monster.id}`}>
-        <CardContent className="flex flex-col items-center">
+        <CardContent className="flex flex-col items-center p-3">
           <img
-            alt="Pikachu"
+            alt="denkinezumi"
             className="rounded-full"
             height={100}
             src="/placeholder.svg"
