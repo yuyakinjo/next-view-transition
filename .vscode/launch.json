@@ -1,0 +1,44 @@
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Compound",
+      "configurations": ["Next.js", "Json-server", "Chrome"],
+      "stopAll": true
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Next.js",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["run", "dev", "--turbo"],
+      "presentation": {
+        "hidden": true
+      }
+    },
+    {
+      "name": "Json-server",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["run", "json-server"],
+      "presentation": {
+        "hidden": true
+      }
+    },
+    {
+      "name": "Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}",
+      "presentation": {
+        "hidden": true
+      }
+    }
+  ]
+}
