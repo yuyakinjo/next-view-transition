@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import { Container } from "@/components/container";
 import { Header } from "@/components/header";
+import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { ViewTransitions } from "next-view-transitions";
@@ -34,6 +35,7 @@ export default function RootLayout({
             <Header />
             {children}
           </Container>
+          <Toaster richColors />
         </body>
       </html>
     </ViewTransitions>
