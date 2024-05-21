@@ -14,7 +14,9 @@ export const FavoriteButton = ({ monster }: Props) => {
   const handleFavorite = async (monster: Monster) => {
     monster.favorite = !monster.favorite;
     await updateMonster(monster.id, monster);
-    toast.success("お気に入り更新しました");
+    monster.favorite
+      ? toast.success("お気に入り追加しました")
+      : toast.error("お気に入り削除しました");
   };
 
   return (
