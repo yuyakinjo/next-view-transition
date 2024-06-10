@@ -1,9 +1,9 @@
 "use server";
 
+import { fetchOptions } from "@/app/fetch-option";
 import { MonsterSchema, type Monster } from "@/schemas/monster";
+import { MonstersSchema } from "@/schemas/monsters";
 import { revalidatePath } from "next/cache";
-import { MonstersSchema } from "../schemas/monsters";
-import { fetchOptions } from "./fetch-option";
 
 export const getMonsters = async () => {
   const { monstersURL, options } = fetchOptions;
