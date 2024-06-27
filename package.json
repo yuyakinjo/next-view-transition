@@ -10,9 +10,11 @@
     "json-server": "json-server --port 3001 db.json"
   },
   "dependencies": {
+    "@effect/platform": "^0.58.12",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "effect": "^3.4.4",
     "lucide-react": "^0.376.0",
     "next": "14.2.2",
     "next-themes": "^0.3.0",
