@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import { Container } from "@/components/container";
 import { Header } from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -33,10 +34,17 @@ export default function RootLayout({
             fontSans.variable
           )}
         >
-          <Container>
-            <Header />
-            {children}
-          </Container>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Container>
+              <Header />
+              {children}
+            </Container>
+          </ThemeProvider>
           <Toaster richColors />
         </body>
       </html>
