@@ -7,6 +7,7 @@ import { Providers } from "@/providers/providers";
 import type { Metadata } from "next";
 import { ViewTransitions } from "next-view-transitions";
 import { Inter } from "next/font/google";
+import type { ReactNode } from "react";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <ViewTransitions>
