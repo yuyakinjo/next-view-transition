@@ -1,9 +1,9 @@
 import "@/app/globals.css";
 import { Container } from "@/components/container";
 import { Header } from "@/components/header";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
+import { Providers } from "@/providers/providers";
 import type { Metadata } from "next";
 import { ViewTransitions } from "next-view-transitions";
 import { Inter } from "next/font/google";
@@ -34,17 +34,12 @@ export default function RootLayout({
             fontSans.variable
           )}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+          <Providers>
             <Container>
               <Header />
               {children}
             </Container>
-          </ThemeProvider>
+          </Providers>
           <Toaster richColors />
         </body>
       </html>
