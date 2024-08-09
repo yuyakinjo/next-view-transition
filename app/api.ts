@@ -3,7 +3,9 @@
 import { fetchOptions } from "@/app/fetch-option";
 import { MonsterSchema, type Monster } from "@/schemas/monster";
 import { MonstersSchema } from "@/schemas/monsters";
+import { UpdateMonsterSchema } from "@/schemas/update-monster";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export const getMonsters = async () => {
   const { monstersURL, options } = fetchOptions;
@@ -63,28 +65,40 @@ export const getMonsterByFavorite = async (favorite: boolean) => {
   }
 };
 
-export const updateMonster = async (id: number, monster: Partial<Monster>) => {
+export const updateMonster = async (monster: Partial<Monster>) => {
+  // validation
+  const validated = UpdateMonsterSchema.safeParse(monster);
+  if (!validated.success) {
+    console.error(validated.error);
+    return;
+  }
+
+  const validatedMonster = validated.data;
+
   const { monstersURL, options } = fetchOptions;
 
+  // mutate
   try {
-    const updateded = await fetch(`${monstersURL}/${id}`, {
+    const updateded = await fetch(`${monstersURL}/${validatedMonster.id}`, {
       ...options,
       method: "PATCH",
-      body: JSON.stringify(monster),
+      body: JSON.stringify(validatedMonster),
     })
       .then((res) => res.json())
-      .then(MonsterSchema.safeParse);
+      .then(UpdateMonsterSchema.safeParse);
 
     if (!updateded.success) {
       throw new Error("Failed to parse updated monster");
     }
-
-    revalidatePath(`/detail/${id}`);
-    revalidatePath("/");
-
-    return updateded.data;
   } catch (error) {
     console.error(error);
     return null;
   }
+
+  // revalidate
+  revalidatePath(`/detail/${monster.id}`);
+  revalidatePath("/");
+
+  // redirect
+  redirect("/");
 };
