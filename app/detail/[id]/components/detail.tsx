@@ -23,6 +23,7 @@ export function Detail({ monster }: Props) {
           height={600}
           src={monster.image}
           width={600}
+          priority={false}
         />
         <div className="flex justify-between items-center">
           <Link

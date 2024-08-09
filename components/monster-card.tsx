@@ -26,6 +26,7 @@ export const MonsterCard = ({ monster }: Props) => {
               aspectRatio: "100/100",
               objectFit: "cover",
             }}
+            priority={false}
             width={100}
           />
           <h3 className="text-lg font-bold mt-2">{monster.name}</h3>
