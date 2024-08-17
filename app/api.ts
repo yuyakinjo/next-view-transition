@@ -1,9 +1,9 @@
 "use server";
 
 import { fetchOptions } from "@/app/fetch-option";
-import { MonsterSchema, type Monster } from "@/schemas/monster";
-import { MonstersSchema } from "@/schemas/monsters";
-import { UpdateMonsterSchema } from "@/schemas/update-monster";
+import { MonsterSchema, type Monster } from "@/schema/monster";
+import { MonstersSchema } from "@/schema/monsters";
+import { UpdateMonsterSchema } from "@/schema/update-monster";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 

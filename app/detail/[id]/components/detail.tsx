@@ -1,6 +1,6 @@
 import { FavoriteButton } from "@/app/detail/[id]/components/favorite-button";
 import { monsters } from "@/db.json";
-import type { Monster } from "@/schemas/monster";
+import type { Monster } from "@/schema/monster";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Link } from "next-view-transitions";
 import Image from "next/image";

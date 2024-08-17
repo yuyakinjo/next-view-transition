@@ -1,4 +1,4 @@
-import type { Monster } from "@/schemas/monster";
+import type { Monster } from "@/schema/monster";
 import { MonsterCard } from "./monster-card";
 
 interface Props {

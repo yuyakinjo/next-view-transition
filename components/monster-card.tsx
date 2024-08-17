@@ -1,7 +1,7 @@
 import { FavoriteButton } from "@/app/detail/[id]/components/favorite-button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import type { Monster } from "@/schemas/monster";
+import type { Monster } from "@/schema/monster";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
 
