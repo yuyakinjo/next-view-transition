@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const MonsterSchema = z.object({
-  id: z.coerce.number(),
+  id: z.coerce.number().default(() => Date.now()),
   name: z.string(),
   type: z.string(),
   hp: z.number(),

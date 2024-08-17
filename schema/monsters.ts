@@ -1,4 +1,4 @@
-import { MonsterSchema } from "@/schemas/monster";
+import { MonsterSchema } from "@/schema/monster";
 import { z } from "zod";
 
 export const MonstersSchema = z.array(MonsterSchema);
