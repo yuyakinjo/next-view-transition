@@ -17,7 +17,7 @@ export const MenuBar = () => {
         </MenubarTrigger>
         <MenubarContent>
           <MenubarItem asChild>
-            <Link href="create">新規追加</Link>
+            <Link href="/create">新規追加</Link>
           </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
