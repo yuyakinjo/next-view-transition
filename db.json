@@ -1,7 +1,7 @@
 {
   "monsters": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Denkiguma",
       "type": "Electric",
       "hp": 35,
@@ -15,7 +15,7 @@
       "description": "Whenever denkiguma comes across something new, it blasts it with a jolt of electricity. If you come across a blackened berry, it's evidence that this Pokémon mistook the intensity of its charge."
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Charmander",
       "type": "Fire",
       "hp": 39,
@@ -29,7 +29,7 @@
       "description": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when Charmander is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely."
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Squirtle",
       "type": "Water",
       "hp": 44,
@@ -43,7 +43,7 @@
       "description": "Squirtle's shell is not merely used for protection. The shell's rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds."
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Bulbasaur",
       "type": "Grass",
       "hp": 45,
