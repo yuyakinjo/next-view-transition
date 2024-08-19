@@ -1,5 +1,5 @@
 import { Link } from "next-view-transitions";
-import { MenuBar } from "./menu-bar";
+import { NavigationMenuBar } from "./navigation-menu-bar";
 import { ThemeToggle } from "./theme-toggle";
 
 export const Header = () => {
@@ -10,7 +10,7 @@ export const Header = () => {
       </Link>
       <div className="flex items-center gap-4">
         <ThemeToggle />
-        <MenuBar />
+        <NavigationMenuBar />
       </div>
     </header>
   );
