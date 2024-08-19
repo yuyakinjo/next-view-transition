@@ -1,5 +1,6 @@
 "use client";
 
+import { createMonster } from "@/app/api";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { MonsterSchema, type Monster } from "@/schemas/monster";
+import { MonsterSchema, type Monster } from "@/schema/monster";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
@@ -34,8 +35,9 @@ export const Forms = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof MonsterSchema>) => {
+  const onSubmit = async (values: z.infer<typeof MonsterSchema>) => {
     console.log("onSubmit", values);
+    const created = await createMonster(values);
   };
 
   const onInvalid = () => {

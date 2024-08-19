@@ -102,3 +102,40 @@ export const updateMonster = async (monster: Partial<Monster>) => {
   // redirect
   redirect("/");
 };
+
+export const createMonster = async (data: Monster) => {
+  // validation
+  const validated = MonsterSchema.safeParse(data);
+  if (!validated.success) {
+    console.error(validated.error);
+    return validated;
+  }
+
+  const validatedMonster = validated.data;
+
+  const { monstersURL, options } = fetchOptions;
+
+  // mutate
+  try {
+    const created = await fetch(monstersURL, {
+      ...options,
+      method: "POST",
+      body: JSON.stringify(validatedMonster),
+    })
+      .then((res) => res.json())
+      .then(MonsterSchema.safeParse);
+
+    if (!created.success) {
+      throw new Error("Failed to parse created monster");
+    }
+  } catch (error) {
+    console.error(error);
+    return { success: false, data: null, error: "server error" };
+  }
+
+  // revalidate
+  revalidatePath("/");
+
+  // redirect
+  redirect("/");
+};
