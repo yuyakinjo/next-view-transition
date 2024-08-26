@@ -1,4 +1,4 @@
-import { Forms } from "./components/forms";
+import { Forms } from "@/app/create/components/forms";
 
 export default function Page() {
   return (

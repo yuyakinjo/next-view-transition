@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "@/schema/ja-zod";
 
 export const MonsterSchema = z.object({
   id: z.coerce.number().default(() => Date.now()),

@@ -1,6 +1,6 @@
+import { NavigationMenuBar } from "@/components/navigation-menu-bar";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Link } from "next-view-transitions";
-import { NavigationMenuBar } from "./navigation-menu-bar";
-import { ThemeToggle } from "./theme-toggle";
 
 export const Header = () => {
   return (
