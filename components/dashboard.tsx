@@ -5,6 +5,7 @@
  */
 
 import { getMonsters } from "@/app/api";
+import { FavoriteList } from "./favorite-list";
 import { MonsterCard } from "./monster-card";
 
 export async function Dashboard() {
@@ -12,16 +13,8 @@ export async function Dashboard() {
 
   return (
     <main className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-      <div className="col-span-1 md:col-span-2 lg:col-span-3">
-        <h2 className="text-xl font-bold mb-4">Favorite Monsters</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {monsters
-            .filter((monster) => monster.favorite)
-            .map((monster) => (
-              <MonsterCard monster={monster} key={monster.id} />
-            ))}
-        </div>
-      </div>
+      <FavoriteList monsters={monsters} />
+
       <div className="col-span-1 md:col-span-2 lg:col-span-3">
         <h2 className="text-xl font-bold mb-4">All Monsters</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

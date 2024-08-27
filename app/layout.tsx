@@ -3,9 +3,11 @@ import { Container } from "@/components/container";
 import { Header } from "@/components/header";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
+import { Providers } from "@/providers/providers";
 import type { Metadata } from "next";
 import { ViewTransitions } from "next-view-transitions";
 import { Inter } from "next/font/google";
+import type { ReactNode } from "react";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -22,21 +24,23 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <ViewTransitions>
-      <html lang="ja">
+      <html lang="ja" suppressHydrationWarning>
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
             fontSans.variable
           )}
         >
-          <Container>
-            <Header />
-            {children}
-          </Container>
+          <Providers>
+            <Container>
+              <Header />
+              {children}
+            </Container>
+          </Providers>
           <Toaster richColors />
         </body>
       </html>

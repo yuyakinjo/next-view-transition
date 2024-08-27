@@ -13,5 +13,6 @@
     "app/**/page.tsx": "${dirname} - Page",
     "app/**/layout.tsx": "${dirname} - Layout",
     "app/**/api/**/route.ts": "${dirname} - API"
-  }
+  },
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }

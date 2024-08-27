@@ -1,10 +1,10 @@
+import { FavoriteButton } from "@/app/detail/[id]/components/favorite-button";
 import { monsters } from "@/db.json";
-import type { Monster } from "@/schemas/monster";
+import type { Monster } from "@/schema/monster";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
 import { Suspense } from "react";
-import { FavoriteButton } from "./favorite-button";
 
 interface Props {
   monster: Monster;
@@ -23,6 +23,7 @@ export function Detail({ monster }: Props) {
           height={600}
           src={monster.image}
           width={600}
+          priority={false}
         />
         <div className="flex justify-between items-center">
           <Link

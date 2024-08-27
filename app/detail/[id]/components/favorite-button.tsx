@@ -2,7 +2,7 @@
 
 import { updateMonster } from "@/app/api";
 import { Button } from "@/components/ui/button";
-import type { Monster } from "@/schemas/monster";
+import type { Monster } from "@/schema/monster";
 import { Star, StarOff } from "lucide-react";
 import { toast } from "sonner";
 

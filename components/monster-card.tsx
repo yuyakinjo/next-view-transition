@@ -1,7 +1,7 @@
 import { FavoriteButton } from "@/app/detail/[id]/components/favorite-button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import type { Monster } from "@/schemas/monster";
+import type { Monster } from "@/schema/monster";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
 
@@ -26,6 +26,7 @@ export const MonsterCard = ({ monster }: Props) => {
               aspectRatio: "100/100",
               objectFit: "cover",
             }}
+            priority={false}
             width={100}
           />
           <h3 className="text-lg font-bold mt-2">{monster.name}</h3>

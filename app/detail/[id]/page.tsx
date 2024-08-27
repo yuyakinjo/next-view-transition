@@ -1,6 +1,6 @@
 import { getMonster } from "@/app/api";
 import { Detail } from "@/app/detail/[id]/components/detail";
-import type { Monster } from "@/schemas/monster";
+import type { Monster } from "@/schema/monster";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
