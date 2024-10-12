@@ -29,12 +29,7 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="ja" suppressHydrationWarning>
-        <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
-          )}
-        >
+        <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
           <Providers>
             <Container>
               <Header />

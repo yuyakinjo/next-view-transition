@@ -4,8 +4,8 @@ import { pathOr } from "ramda";
 import { z } from "zod";
 
 export class ErrorHandler {
-  #errorName = "UnknownError";
-  #errorMessage = "Unknown";
+  private errorName = "UnknownError";
+  private errorMessage = "Unknown";
 
   static getName = pathOr("UnknownError", ["data", "name"]);
   static getMessage = pathOr("Unknown", ["data", "message"]);
@@ -16,8 +16,8 @@ export class ErrorHandler {
     const customError = z.instanceof(CustomError).safeParse(unknownError);
     const requestError = z.instanceof(RequestError).safeParse(unknownError);
 
-    instance.#errorName = this.getName(error) || this.getName(customError) || this.getName(requestError);
-    instance.#errorMessage = this.getMessage(error) || this.getMessage(customError) || this.getMessage(requestError);
+    instance.errorName = this.getName(error) || this.getName(customError) || this.getName(requestError);
+    instance.errorMessage = this.getMessage(error) || this.getMessage(customError) || this.getMessage(requestError);
 
     return instance;
   }
@@ -27,8 +27,8 @@ export class ErrorHandler {
       success: false,
       data: null,
       rawError: null,
-      errorFrom: this.#errorName,
-      message: this.#errorMessage,
+      errorFrom: this.errorName,
+      message: this.errorMessage,
     } as const;
   }
 }

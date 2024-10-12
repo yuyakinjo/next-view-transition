@@ -14,22 +14,12 @@ export const FavoriteButton = ({ monster }: Props) => {
   const handleFavorite = async (monster: Monster) => {
     monster.favorite = !monster.favorite;
     await updateMonster(monster);
-    monster.favorite
-      ? toast.success("お気に入り追加しました")
-      : toast.error("お気に入り削除しました");
+    monster.favorite ? toast.success("お気に入り追加しました") : toast.error("お気に入り削除しました");
   };
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
-      onClick={async () => await handleFavorite(monster)}
-    >
-      {monster.favorite ? (
-        <Star className="text-yellow-500" />
-      ) : (
-        <StarOff className="text-gray-500" />
-      )}
+    <Button variant="outline" size="icon" onClick={async () => await handleFavorite(monster)}>
+      {monster.favorite ? <Star className="text-yellow-500" /> : <StarOff className="text-gray-500" />}
     </Button>
   );
 };

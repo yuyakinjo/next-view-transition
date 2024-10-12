@@ -23,9 +23,7 @@ export const NavigationMenuBar = () => {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <Link href="/create" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                新規作成
-              </NavigationMenuLink>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>新規作成</NavigationMenuLink>
             </Link>
           </NavigationMenuContent>
         </NavigationMenuItem>

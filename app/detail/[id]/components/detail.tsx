@@ -68,47 +68,33 @@ export function Detail({ monster }: Props) {
         <div className="grid gap-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1">
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                HP
-              </span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">HP</span>
               <span className="font-medium">{monster.hp}</span>
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                Attack
-              </span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">Attack</span>
               <span className="font-medium">{monster.attack}</span>
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                Defense
-              </span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">Defense</span>
               <span className="font-medium">{monster.defense}</span>
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                Special Attack
-              </span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">Special Attack</span>
               <span className="font-medium">{monster.specialAttack}</span>
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                Special Defense
-              </span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">Special Defense</span>
               <span className="font-medium">{monster.specialDeffense}</span>
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                Speed
-              </span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">Speed</span>
               <span className="font-medium">{monster.speed}</span>
             </div>
           </div>
           <div className="grid gap-2">
             <h2 className="text-xl font-bold">Description</h2>
-            <p className="text-gray-500 dark:text-gray-400">
-              {monster.description}
-            </p>
+            <p className="text-gray-500 dark:text-gray-400">{monster.description}</p>
           </div>
         </div>
         <Link href={"/"}>Homeへ</Link>

@@ -1,7 +1,7 @@
 "use server";
 
 import { fetchOptions } from "@/app/fetch-option";
-import { MonsterSchema, type Monster } from "@/schema/monster";
+import { type Monster, MonsterSchema } from "@/schema/monster";
 import { MonstersSchema } from "@/schema/monsters";
 import { UpdateMonsterSchema } from "@/schema/update-monster";
 import { revalidatePath } from "next/cache";
@@ -47,10 +47,7 @@ export const getMonsterByFavorite = async (favorite: boolean) => {
   const { monstersURL, options } = fetchOptions;
   const isFavorite = favorite ? 1 : 0;
   try {
-    const monsters = await fetch(
-      `${monstersURL}?favorite=${isFavorite}`,
-      options
-    )
+    const monsters = await fetch(`${monstersURL}?favorite=${isFavorite}`, options)
       .then((res) => res.json())
       .then(MonstersSchema.safeParse);
 

@@ -2,17 +2,9 @@
 
 import { createMonster } from "@/app/api";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { MonsterSchema, type Monster } from "@/schema/monster";
+import { type Monster, MonsterSchema } from "@/schema/monster";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
@@ -47,10 +39,7 @@ export const Forms = () => {
   return (
     <div>
       <Form {...forms}>
-        <form
-          onSubmit={forms.handleSubmit(onSubmit, onInvalid)}
-          className="space-y-8"
-        >
+        <form onSubmit={forms.handleSubmit(onSubmit, onInvalid)} className="space-y-8">
           <FormField
             control={forms.control}
             name="name"
