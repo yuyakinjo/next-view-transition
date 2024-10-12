@@ -16,8 +16,10 @@ export class ErrorHandler {
     const customError = z.instanceof(CustomError).safeParse(unknownError);
     const requestError = z.instanceof(RequestError).safeParse(unknownError);
 
-    instance.errorName = this.getName(error) || this.getName(customError) || this.getName(requestError);
-    instance.errorMessage = this.getMessage(error) || this.getMessage(customError) || this.getMessage(requestError);
+    instance.errorName =
+      ErrorHandler.getName(error) || ErrorHandler.getName(customError) || ErrorHandler.getName(requestError);
+    instance.errorMessage =
+      ErrorHandler.getMessage(error) || ErrorHandler.getMessage(customError) || ErrorHandler.getMessage(requestError);
 
     return instance;
   }
